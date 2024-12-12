@@ -76,16 +76,18 @@
         function musikdangambar() {
             const birthdaydesma = document.getElementById("birthdaydesma");
             const image = document.getElementById("image");  
+            const romanticMessage = document.getElementById("romanticMessage");
+            const giftHint = document.getElementById("giftHint");
               
               image.style.display = "block";
+              romanticMessage.style.display = "block"; 
+              giftHint.style.display = "block"; 
               birthdaydesma.currentTime = 105;
               birthdaydesma.play(); 
         }
 
         function startBlinking() {
             const message = document.getElementById("message");
-            const romanticMessage = document.getElementById("romanticMessage");
-            const giftHint = document.getElementById("giftHint");
             const newMessage1 = document.getElementById("newMessage1");
             const newMessage2 = document.getElementById("newMessage2");
 
@@ -96,8 +98,7 @@
             // Blink "Happy Birthday Desma!" 10x
             const interval = setInterval(() => {
                 message.style.display = message.style.display === "none" ? "block" : "none";
-                romanticMessage.style.display = message.style.display; 
-                giftHint.style.display = message.style.display; 
+                
                 count++;
                 if (count >= 100) { // 10x blink (visible + hidden = 2, jadi 20 loop)
                     clearInterval(interval);
