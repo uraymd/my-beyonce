@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Desma</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        #message {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ff5733;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        #image { 
+            margin: 20px auto;
+            display: none;
+            width: 200px;
+        }
+
+        .additional-text {
+            font-size: 18px;
+            font-style: italic;
+            color: #555;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .new-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>WELCOME TO JAKARTA</h1>
+    <p> Untuk melanjutkan silakan masukkan tanggal, bulan dan tahun kamu as a special person in here : </p>
+    <div class="input-container">
+        <input type="date" id="dateInput" />
+        <button onclick="checkDate()">Submit</button>
+    </div>
+    <audio id="birthdaydesma" src="happy_birthday.mp3"></audio> <!-- Audio File -->
+    <div id="message">Happy Birthday Desma! <3 </div>
+    <img id="image" src="fotoberdua.jpg" alt="My Beyonce" />
+    <div id="romanticMessage" class="additional-text">Maaf aku gabakat romantis wkwkw</div>
+    <div id="giftHint" class="additional-text">Hadiahmu ambil dibelakang kursi ya cantik :p</div>
+    <div id="newMessage1" class="new-text">Tapi bohong, yakali hadiahnya cuma boneka.</div>
+    <div id="newMessage2" class="new-text">Hadiah utamanya ada di pouch uray wle.</div>
+
+    <script>
+        function checkDate() {
+            const dateInput = document.getElementById('dateInput').value;
+            const correctDate = "2003-12-16";
+
+            if (dateInput === correctDate) {
+              
+              musikdangambar();
+              startBlinking();
+
+            } else {
+                alert("Tanggal yang Anda masukkan salah. Silakan coba lagi.");
+            }
+        }
+
+        function musikdangambar() {
+            const birthdaydesma = document.getElementById("birthdaydesma");
+            const image = document.getElementById("image");  
+              
+              image.style.display = "block";
+              birthdaydesma.currentTime = 105;
+              birthdaydesma.play(); 
+        }
+
+        function startBlinking() {
+            const message = document.getElementById("message");
+            const romanticMessage = document.getElementById("romanticMessage");
+            const giftHint = document.getElementById("giftHint");
+            const newMessage1 = document.getElementById("newMessage1");
+            const newMessage2 = document.getElementById("newMessage2");
+
+            let count = 0;
+            
+            
+
+            // Blink "Happy Birthday Desma!" 10x
+            const interval = setInterval(() => {
+                message.style.display = message.style.display === "none" ? "block" : "none";
+                romanticMessage.style.display = message.style.display; 
+                giftHint.style.display = message.style.display; 
+                count++;
+                if (count >= 100) { // 10x blink (visible + hidden = 2, jadi 20 loop)
+                    clearInterval(interval);
+                    message.style.display = "none"; // Bersihkan pesan sebelumnya
+                    romanticMessage.style.display = "none"; // Sembunyikan teks tambahan
+                    giftHint.style.display = "none"; // Sembunyikan teks tambahan
+                    // Tampilkan pesan baru setelah 1 detik
+                    setTimeout(() => {
+                        newMessage1.style.display = "block";
+
+                        // Tampilkan pesan berikutnya setelah 2 detik
+                        setTimeout(() => {
+                            newMessage2.style.display = "block";
+                        }, 2000);
+                    }, 1000);
+                }
+            }, 500); // Blink setiap 0.5 detik
+        }</script>
+</body>
+</html>
